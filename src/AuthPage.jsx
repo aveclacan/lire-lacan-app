@@ -1,16 +1,16 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { signIn, signUp } from '../lib/supabase'
 
 export default function AuthPage() {
-  const [modo, setModo] = useState('login') // 'login' | 'cadastro'
+  const [modo, setModo] = useState('login')
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [nome, setNome] = useState('')
   const [erro, setErro] = useState('')
   const [msg, setMsg] = useState('')
   const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
+
+  const LEITOR_URL = 'https://aveclacan.github.io/lire-lacan'
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -18,7 +18,7 @@ export default function AuthPage() {
     try {
       if (modo === 'login') {
         await signIn(email, senha)
-        window.location.href = 'https://aveclacan.github.io/lire-lacan'
+        window.location.href = LEITOR_URL
       } else {
         await signUp(email, senha, nome)
         setMsg('Cadastro realizado! Você já pode entrar.')
@@ -113,7 +113,7 @@ export default function AuthPage() {
 
         {/* Acesso sem cadastro */}
         <div style={styles.semLogin}>
-          <button style={styles.linkBtn} onClick={() => window.location.href = 'https://aveclacan.github.io/lire-lacan'}>
+          <button style={styles.linkBtn} onClick={() => { window.location.href = LEITOR_URL }}>
             Continuar sem conta →
           </button>
           <p style={styles.semLoginNote}>

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
-import { AuthProvider, useAuth } from './AuthContext'
+import { AuthProvider, useAuth } from './components/AuthContext'
 import AuthPage from './AuthPage'
 
 // Após login, redirecionar para o leitor no GitHub Pages

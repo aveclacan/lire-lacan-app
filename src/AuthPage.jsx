@@ -113,7 +113,7 @@ export default function AuthPage() {
 
         {/* Acesso sem cadastro */}
         <div style={styles.semLogin}>
-          <button style={styles.linkBtn} onClick={() => navigate('/ler')}>
+          <button style={styles.linkBtn} onClick={() => window.location.href = 'https://aveclacan.github.io/lire-lacan'}>
             Continuar sem conta →
           </button>
           <p style={styles.semLoginNote}>

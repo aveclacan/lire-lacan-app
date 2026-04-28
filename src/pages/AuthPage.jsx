@@ -24,9 +24,14 @@ export default function AuthPage() {
 
     try {
       if (modo === 'login') {
-        await signIn(email, senha)
+        const data = await signIn(email, senha)
         clearTimeout(timeoutId)
-        window.location.href = LEITOR_URL
+        // Passar token na URL para contornar bloqueio de cookies do Safari
+        const token = data?.session?.access_token
+        const url = token
+          ? `${LEITOR_URL}?token=${encodeURIComponent(token)}`
+          : LEITOR_URL
+        window.location.href = url
       } else {
         await signUp(email, senha, nome)
         clearTimeout(timeoutId)
